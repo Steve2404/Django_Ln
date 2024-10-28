@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+{% load custom_filters %}
+
+{% block content %}
+  <h1>Book List</h1>
+  {% if books %}
+  <ul>
+    {% for book in books %}
+      <li>
+        <a href="{{ book.get_absolute_url }}">{{ book.title|add_suffix:"**" }}</a> ({{book.author}})
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no books in the library.</p>
+  {% endif %}
+{% endblock %}
